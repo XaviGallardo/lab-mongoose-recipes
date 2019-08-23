@@ -38,7 +38,7 @@ const recipeSchema = new Schema(
 );
 
 const Recipe = mongoose.model('Recipe', recipeSchema);
-module.exports = Recipe;
+// module.exports = Recipe; No hace falta exportar
 
 Recipe.create({
   title: 'Macarrones',
@@ -60,7 +60,8 @@ Recipe.create({
   })
   .then(() => {
     console.log('Updated ok!!!');
-    Recipe.findByIdAndRemove({ title: 'Carrot Cake' });
+    // Recipe.findByIdAndRemove({ title: 'Carrot Cake' }); -> Logico!!! findbyId y no le paso una id... sin comentarios, en que estaría pensando!!!
+    Recipe.deleteOne({ title: 'Carrot Cake' });
   })
   .then(() => {
     console.log('Carrot Cake deleted');
